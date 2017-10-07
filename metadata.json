@@ -1,5 +1,5 @@
 {
-  "name": "longlivechief-docker",
+  "name": "hackerhappyhour-docker",
   "version": "1.0.0-pre-release",
   "author": "Hacker Happy Hour",
   "summary": "Module for installing and managing docker",
