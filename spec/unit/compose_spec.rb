@@ -14,30 +14,8 @@ describe 'docker::compose', :type => :class do
     :operatingsystemmajrelease => '10',
   } }
 
-
-  context 'when no proxy is provided' do
-    let(:params) { {:version => '1.7.0'} }
-    it { is_expected.to contain_exec('Install Docker Compose 1.7.0').with_command(
-           'curl -s -L  https://github.com/docker/compose/releases/download/1.7.0/docker-compose-Linux-x86_64 > /usr/local/bin/docker-compose-1.7.0')
-    }
-  end
-
-  context 'when proxy is provided' do
-    let(:params) { {:proxy => 'http://proxy.example.org:3128/',
-                    :version => '1.7.0'} }
-    it { is_expected.to compile }
-    it { is_expected.to contain_exec('Install Docker Compose 1.7.0').with_command(
-           'curl -s -L --proxy http://proxy.example.org:3128/ https://github.com/docker/compose/releases/download/1.7.0/docker-compose-Linux-x86_64 > /usr/local/bin/docker-compose-1.7.0')
-    }
-  end
-
-  context 'when proxy is not a http proxy' do
-    let(:params)  { {:proxy => 'this is not a URL'} }
-    it do
-      expect {
-        is_expected.to compile
-      }.to raise_error(/does not match/)
-    end
+  context 'using default parameters ' do
+    it { should contain_file('/usr/local/bin/docker-compose').with_content(/IMAGE=docker\/compose/) }
   end
 
 end
