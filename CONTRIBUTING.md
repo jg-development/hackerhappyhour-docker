@@ -39,6 +39,27 @@ Install the dependencies like so...
 
     bundle install --path=~/.bundle
 
+### Using docker
+
+For ease of development, we have included a dockerized development environment that can execute all the tests below in a docker container. To set this up, run the following `docker` commands from your project directory:
+
+```
+docker build -t h3-docker .
+```
+
+This will give you a base image to use as a substitue for installing Ruby and all it's trimmings and trappings on your machine.
+
+In place of running `bundle` in the commands below, you can now run:
+
+```
+docker run -it --rm -v `pwd`:/usr/src/app h3-docker
+```
+
+The entrypoint of this container is `bundle`, so just tack on any `exec rake ...` command to execute the tests below. Alternatively, you can add an alias to your shell's config file ( `.zshrc`, `.bashrc`, etc...):
+
+    alias h3d="docker run -it --rm -v `pwd`:/usr/src/app h3-docker"
+
+Now just replace the `bundle` command found in the examples below with the `h3d` command.
 ## Syntax and style
 
 The test suite will run [Puppet Lint](http://puppet-lint.com/) and
@@ -61,6 +82,7 @@ with:
 Note also you can run the syntax, style and unit tests in one go with:
 
     bundle exec rake test
+
 
 ## Integration tests
 
