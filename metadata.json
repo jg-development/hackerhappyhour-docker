@@ -58,5 +58,11 @@
       "name": "puppet",
       "version_requirement": ">= 5.0.0"
     }
+  ],
+  "tags": [
+    "docker",
+    "devops",
+    "container",
+    "orchestration"
   ]
 }
