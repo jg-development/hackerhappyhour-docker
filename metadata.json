@@ -1,18 +1,17 @@
 {
-  "name": "garethr-docker",
-  "version": "5.3.0",
-  "author": "Gareth Rushgrove",
+  "name": "longlivechief-docker",
+  "version": "1.0.0-pre-release",
+  "author": "Hacker Happy Hour",
   "summary": "Module for installing and managing docker",
   "license": "Apache-2.0",
-  "source": "https://github.com/garethr/garethr-docker.git",
-  "project_page": "https://github.com/garethr/garethr-docker",
-  "issues_url": "https://github.com/garethr/garethr-docker/issues",
+  "source": "https://github.com/HackerHappyHour/hackerhappyhour-docker.git",
+  "project_page": "https://github.com/HackerHappyHour/hackerhappyhour-docker",
+  "issues_url": "https://github.com/HackerHappyHour/hackerhappyhour-docker/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 4.1.0"},
     {"name":"puppetlabs/apt","version_requirement":">= 1.8.0 <= 3.0.0"},
     {"name":"stahnma/epel","version_requirement":">= 0.0.6"}
   ],
-  "data_provider": null,
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -57,7 +56,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.4.0"
+      "version_requirement": ">= 5.0.0"
     }
   ]
 }
