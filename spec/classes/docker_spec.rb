@@ -181,11 +181,6 @@ describe 'docker', :type => :class do
           it { should contain_file('/etc/default/docker').with_content(/bridge br0/) }
         end
 
-        context 'with custom service_name' do
-          let(:params) {{ 'service_name' => 'docker.io' }}
-          it { should contain_file('/etc/default/docker.io') }
-        end
-
       end
 
       if osfamily == 'RedHat'
@@ -410,11 +405,6 @@ describe 'docker', :type => :class do
 
       it { should contain_file(service_config_file).without_content(/icc=/) }
 
-      context 'with a specific docker command' do
-        let(:params) {{ 'docker_command' => 'docker.io' }}
-        it { should contain_file(service_config_file).with_content(/docker.io/) }
-      end
-
       context 'with a custom package name' do
         let(:params) { {'package_name' => 'docker-custom-pkg-name' } }
         it { should contain_package('docker').with_name('docker-custom-pkg-name').with_ensure('present') }
@@ -576,11 +566,6 @@ describe 'docker', :type => :class do
       context 'with service_state set to stopped' do
         let(:params) { {'service_state' => 'stopped'} }
         it { should contain_service('docker').with_ensure('stopped') }
-      end
-
-      context 'with a custom service name' do
-        let(:params) { {'service_name' => 'docker.io'} }
-        it { should contain_service('docker').with_name('docker.io') }
       end
 
       context 'with service_enable set to false' do
@@ -775,7 +760,6 @@ describe 'docker', :type => :class do
       it { should_not contain_class('epel') }
     end
 
-    it { should contain_package('docker').with_name('docker-io').with_ensure('present') }
     it { should_not contain_apt__source('docker') }
     it { should_not contain_package('linux-image-extra-3.8.0-29-generic') }
 
