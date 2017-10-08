@@ -24,7 +24,7 @@ class docker::repos {
           repos    => $docker::package_repos,
           key      => {
             'id'     => $package_key,
-            'server' => 'hkp://keyserver.ubuntu.com:80',
+            'server' => $key_source,
           },
           require  => [
             Package['debian-keyring'],
